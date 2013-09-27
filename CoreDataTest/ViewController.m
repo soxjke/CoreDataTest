@@ -56,11 +56,24 @@
     {
         // Refetch object
         NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
-        Message *message = (Message*)[context objectWithID:objectId];
+        
+        NSPredicate *predicate  = [NSPredicate predicateWithFormat:@"timestamp == %@", now];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Message class])];
+        request.predicate = predicate;
+        
+        NSError *error;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (error)
+        {
+            NSLog(@"Error fetching in update");
+            return;
+        }
+        
+        Message *message = [results lastObject];
+        NSLog(@"message %@", message);
         
         message.timestamp = [NSDate date];
         
-        NSError *error;
         [context save:&error];
         
         if (error)
