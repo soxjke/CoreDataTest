@@ -46,7 +46,7 @@
         return;
     }
     
-    NSManagedObjectID *objectId = message.objectID;
+    __weak NSManagedObjectID *objectId = message.objectID;
     
     // Now simulate server delay
     
@@ -57,23 +57,11 @@
         // Refetch object
         NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         
-        NSPredicate *predicate  = [NSPredicate predicateWithFormat:@"timestamp == %@", now];
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Message class])];
-        request.predicate = predicate;
-        
-        NSError *error;
-        NSArray *results = [context executeFetchRequest:request error:&error];
-        if (error)
-        {
-            NSLog(@"Error fetching in update");
-            return;
-        }
-        
-        Message *message = [results lastObject];
-        NSLog(@"message %@", message);
-        
+        Message *message = (Message*)[context objectWithID:objectId];
+
         message.timestamp = [NSDate date];
-        
+
+        NSError *error;
         [context save:&error];
         
         if (error)
