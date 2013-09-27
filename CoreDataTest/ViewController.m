@@ -46,7 +46,9 @@
         return;
     }
     
-    __weak NSManagedObjectID *objectId = message.objectID;
+    NSManagedObjectID *objectId = message.objectID.copy;
+    
+    NSLog(@"String for breakpoint");
     
     // Now simulate server delay
     
