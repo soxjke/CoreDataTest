@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "Message.h"
+#import "NSObject+SafePointer.h"
 
 @interface ViewController ()
 
@@ -46,16 +47,21 @@
         return;
     }
     
-    NSManagedObjectID *objectId = message.objectID.copy;
-    
-    NSLog(@"String for breakpoint");
-    
+    __unsafe_unretained NSManagedObjectID *objectId = message.objectID;
+    Class objectIdClass = [objectId class];
     // Now simulate server delay
     
     double delayInSeconds = 5.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
     {
+        
+        if (![NSObject safeObject:objectId isMemberOfClass:objectIdClass])
+        {
+            NSLog(@"Object for update already deleted");
+            return;
+        }
+        
         // Refetch object
         NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         

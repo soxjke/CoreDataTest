@@ -26,6 +26,8 @@
 		5BD8D43F17F6166B0047724A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8D43C17F6166B0047724A /* Model.xcdatamodeld */; };
 		5BD8D44217F61B340047724A /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8D44117F61B340047724A /* Message.m */; };
 		5BD8D44317F61B340047724A /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8D44117F61B340047724A /* Message.m */; };
+		5BD8D44617F63B4B0047724A /* NSObject+SafePointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8D44517F63B4B0047724A /* NSObject+SafePointer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5BD8D44717F63B4B0047724A /* NSObject+SafePointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8D44517F63B4B0047724A /* NSObject+SafePointer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		5BD8D43D17F6166B0047724A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5BD8D44017F61B340047724A /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		5BD8D44117F61B340047724A /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		5BD8D44417F63B4B0047724A /* NSObject+SafePointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SafePointer.h"; sourceTree = "<group>"; };
+		5BD8D44517F63B4B0047724A /* NSObject+SafePointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SafePointer.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				5BD8D43C17F6166B0047724A /* Model.xcdatamodeld */,
 				5BD8D44017F61B340047724A /* Message.h */,
 				5BD8D44117F61B340047724A /* Message.m */,
+				5BD8D44417F63B4B0047724A /* NSObject+SafePointer.h */,
+				5BD8D44517F63B4B0047724A /* NSObject+SafePointer.m */,
 			);
 			path = CoreDataTest;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD8D44617F63B4B0047724A /* NSObject+SafePointer.m in Sources */,
 				5BD8D41C17F616160047724A /* ViewController.m in Sources */,
 				5BD8D41617F616160047724A /* AppDelegate.m in Sources */,
 				5BD8D44217F61B340047724A /* Message.m in Sources */,
@@ -275,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD8D44717F63B4B0047724A /* NSObject+SafePointer.m in Sources */,
 				5BD8D43117F616160047724A /* CoreDataTestTests.m in Sources */,
 				5BD8D44317F61B340047724A /* Message.m in Sources */,
 				5BD8D43F17F6166B0047724A /* Model.xcdatamodeld in Sources */,
