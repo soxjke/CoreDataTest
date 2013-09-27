@@ -56,11 +56,12 @@
     {
         // Refetch object
         NSManagedObjectContext *context = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
-        Message *message = (Message*)[context objectWithID:objectId];
+        
+        NSError *error;
+        Message *message = (Message*)[context existingObjectWithID:objectId error:&error];
         
         message.timestamp = [NSDate date];
         
-        NSError *error;
         [context save:&error];
         
         if (error)
